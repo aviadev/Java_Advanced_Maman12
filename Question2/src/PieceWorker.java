@@ -26,15 +26,10 @@ private void setQuantity(int qnt)
 		else quantity = qnt;
 	}
 
-public double setEarnings(double GIFT)
-	{
-		return earnings() + GIFT;
-	}
-
 public String toString()
 	{
-		return String.format(
-				super.toString() + "\n" + "TypeOfEmployee: " + this.type + "\nrate per quantity: " + ratePerQuantity +
+		return (super.toString() + "\n" + "TypeOfEmployee: " + this.type +
+				"\nrate per quantity: " + ratePerQuantity +
 						"\nquantity: " + quantity);
 	}
 

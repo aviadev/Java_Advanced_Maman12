@@ -26,11 +26,6 @@ public void setWeeklySalary(double salary)
 		else throw new IllegalArgumentException("Weekly salary must be >= 0.0");
 	} // end method setWeeklySalary
 
-public double setEarnings(double GIFT)
-	{
-		return earnings() + GIFT;
-	}
-
 // return String representation of SalariedEmployee object
 
 @Override

@@ -16,7 +16,11 @@ public BirthDate(int day, int month, int year)
 
 		else if (year < 100) _birthDate.set(1900 + year, month - 1, day);
 
-		else if (month > 12 || month < 1 || day > 31 || day < 1) throw new IllegalArgumentException("Invalid Date!");
+		if (month > 12 || month < 1 || day > 31 || day < 1)
+			{
+			throw new IllegalArgumentException("Invalid Date! Check dates");
+
+			}
 	}
 
 public boolean hasBirthdayThisMonth()

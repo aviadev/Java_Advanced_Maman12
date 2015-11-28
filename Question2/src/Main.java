@@ -14,7 +14,9 @@ public static void main(String[] args) throws Exception
 
 		BasePlusCommissionEmployee basePlusCommEmp = new BasePlusCommissionEmployee("BasePlusCommission", "Employee",
 				"11111", 1000, 0.5, 5000);
-		basePlusCommEmp.setBirthDate(01, 11, 1991);
+		basePlusCommEmp.setBirthDate(01, 1, 1991);
+		// You can check date validation
+		// basePlusCommEmp.setBirthDate(01, 1, 1991);
 		emplyoeesList.add(basePlusCommEmp);
 
 		CommissionEmployee commEmp = new BasePlusCommissionEmployee("Excellent", "commEmp", "22222", 2000, 0.7, 7000);
@@ -35,10 +37,10 @@ public static void main(String[] args) throws Exception
 
 		for (Employee emp : emplyoeesList)
 			{
-			String empType = emp.getClass().getName();
+
 			if (emp.hasBirthdayThisMonth())
 				{
-				System.out.println(emp.getClass().getName());
+
 				System.out.println(
 						"\nEmployee: " + "'" + emp.getFirstName() + " ," + emp.getLastName() + "'" + " has birthday this month!\n" + emp.getBirthDate() +
 								"\nTherefore additional 200$ were added to earnings.\n");
