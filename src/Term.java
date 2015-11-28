@@ -7,11 +7,6 @@ public class Term
 private double _coefficient;
 private int _degree;
 
-public Term()
-	{
-
-	}
-
 public Term(double coefficient, int degree)
 	{
 		_coefficient = coefficient;
