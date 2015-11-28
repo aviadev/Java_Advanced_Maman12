@@ -1,98 +1,143 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
- * Created by aviad on 22/10/2015.
+ * Created by Aviad on 22/10/2015.
  */
 public class Main
 {
 
 public static void main(String[] args) throws Exception
-{
-	//PolinomialList polinomialList = new PolinomialList();
-	/*//Polynomial p = new Polynomial();
-	//ArrayList coArray = new ArrayList<>(Arrays.asList(5.7, 3.2, 2.0, 4.001, 4.0001));
+	{
+		int polCounter = 1;
+		String userInput;
+		Scanner scanner = new Scanner(System.in);
+		ArrayList<Polynomial> polList = new ArrayList<>();
 
+		while (polCounter < 3)
+			{
+			System.out.println("\nPlease type values for polynomial #" + polCounter + ":\n" +
+					"Type the terms by couples of coefficient : degree.\nUse commas to separate the terms.\n");
+			userInput = scanner.nextLine();
+			polList.add(SplitStringIntoCoefDegree(userInput));
+			polCounter++;
+			}
 
-	//ArrayList degArray = new ArrayList<>(Arrays.asList(57, 13, 20, 40, 40));
+		String menu = ("\nWhat to do next?\n\n" +
+				"Type 'plus' to perform plus between the two polynomials\n" +
+				"Type 'minus' to perform minus between the two polynomials\n" +
+				"Type 'evaluate' to get the nigzeret of the Polynomial\n" +
+				"Type 'equals' to compare the two polynomials -> 'true' if yes, otherwise 'false'\n" +
+				"Type 'menu' to show the main menu again\n" +
+				"Type 'print' to print the list of the Polynomials you entered\n" +
+				"Type -1 to end the program\n");
 
-	Polynomial2 p1 = new Polynomial2(5,20);
-	Polynomial2 p3 = p1.plus(new Polynomial2(4, 21).plus(new Polynomial2(6, 20)));
-	//p.ad(0, new Polynomial(coArray, degArray));
-	System.out.println("zero(x) =     " + p3);
-	Polynomial2 zero = new Polynomial2(0, 0);
+		showMessage(menu);
 
+		Polynomial p1 = polList.get(0);
+		Polynomial p2 = polList.get(1);
+		userInput = scanner.nextLine();
 
-	Polynomial2 p2   = new Polynomial2(4, 6);
-	Polynomial2 p5   = new Polynomial2(2, 4);
+		while (userInput.equals("-1"))
+			{
 
-	//Polynomial2 p3   = new Polynomial2(1, 0);
-	Polynomial2 p4   = new Polynomial2(2, 1);
+			switch (userInput.toLowerCase())
+				{
+				case "plus":
+				{
+				showMessage("Going to perform 'plus' operation between:\n" +
+						"p1 = " + p1.toString() + "\n" +
+						"p2 = " + p2.toString() + "\n");
+				Polynomial p3 = p1.plus(p2);
+				showMessage("***Result is:\n" + p3.toString());
+				}
+				break;
 
+				case "minus":
+				{
+				showMessage("Going to perform 'minus' operation between:\n" +
+						"p1 = " + p1.toString() + "\n" +
+						"p2 = " + p2.toString() + "\n");
+				Polynomial p3 = p1.minus(p2);
+				showMessage("***Result is:\n" + p3.toString());
+				}
+				break;
 
-	Polynomial2 q1   = new Polynomial2(3, 2);
-	Polynomial2 q2   = new Polynomial2(5, 0);
-	Polynomial2 q    = q1.plus(q2);                     // 3x^2 + 5
+				case "evaluate":
+				{
+				showMessage("Going to perform 'evaluate' operation on:\n" +
+						"p1 = " + p1.toString() + "\n" +
+						"p2 = " + p2.toString() + "\n");
+				Polynomial p3 = p1.evaluate();
+				showMessage("***Result is:\np1' = " + p3.toString());
+				p3 = p2.evaluate();
+				showMessage("***Result is:\np2' = " + p3.toString());
+				}
+				break;
 
+				case "equals":
+				{
+				showMessage("Going to perform 'equals' operation now:\n" +
+						"p1 = " + p1.toString() + "\n" +
+						"p2 = " + p2.toString() + "\n");
+				showMessage("***Result is: " + p1.equals(p2));
+				}
+				break;
 
+				case "menu":
+				{
+				showMessage(menu);
+				break;
+				}
 
-	System.out.println("zero(x) =     " + zero);
+				case "-1":
+				{
+				showMessage("Thanks you! Bye Bye");
+				return;
+				}
 
+				case "print":
+				{
+				System.out.println("Current list is: ");
+				polList.forEach(System.out::println);
+				}
+				break;
 
+				default:
+				{
+				showMessage("Invalid user input! Please choose an option from the menu\n" + menu);
+				}
+				break;
+				}
 
-	Polynomial pp1 = new Polynomial(1,1);    //x
-	Polynomial pp2   = new Polynomial(5, 0); //5.0
-	Polynomial pp3   = new Polynomial(1, 0); //1.0
-	Polynomial pp4   = new Polynomial(1, 2); //x^2
-	Polynomial pp5   = new Polynomial(2, 1); //2x
-	Polynomial pp6   = new Polynomial(2, 2); //2x^2
-	Polynomial pp7   = new Polynomial(-2, 1); //-2x
-	Polynomial pp8   = new Polynomial(-1, 1); //-x*/
+			showMessage("\nPlease enter your next operation:\n");
+			userInput = scanner.nextLine();
+			}
+	}
 
-	//Polynomial pp10 ; //-x
-	//Polynomial pp11   = new Polynomial(); //-x
+private static Polynomial SplitStringIntoCoefDegree(String userInput) throws Exception
+	{
+		String[] formattedLine = userInput.split("[:,]");
 
-/*	double [] coe = new double[] {1,5,1,1,2,2,-2,-1};
-	int [] deg = new int [] {1,0,0,2,1,2,1,1};*/
+		ArrayList<Double> coefficientArray = new ArrayList();
+		ArrayList<Integer> degreeArray = new ArrayList();
 
-	double[] plusCoeP1 = new double[]{3, 5, 7, 9, 11, 13, -6, -5};
-	int[] plusDegP1 = new int[]{3, 2, 1, 0, 4, 3, 3, 2};
-	Polynomial p1 = new Polynomial(plusCoeP1, plusDegP1);
+		if (coefficientArray.size() != degreeArray.size())
+			throw new Exception("Coefficient array and Degree array are not on the same size!");
 
-	double[] plusCoeP2 = new double[]{3, 5, 7, 1};
-	int[] plusDegP2 = new int[]{4, 2, 1, 0};
+		for (int i = 0; i < formattedLine.length; i += 2)
+			{
+			coefficientArray.add(Double.parseDouble(formattedLine[i]));
+			degreeArray.add(Integer.parseInt(formattedLine[i + 1]));
+			}
+		Polynomial p = new Polynomial(coefficientArray, degreeArray);
+		System.out.println("\nYour Polynomial is: \n" + p);
+		return p;
+	}
 
-	double[] plusCoeP3 = new double[]{-4, -5, -14, -10};
-	int[] plusDegP3 = new int[]{4, 2, 1, 0};
-	Polynomial p3 = new Polynomial(plusCoeP3, plusDegP3);
-
-	Polynomial p2 = new Polynomial(plusCoeP2, plusDegP2);
-	Polynomial p4 = p1.plus(p2).plus(p3);
-
-	//pp10.plus(pp11);
-	/*System.out.println("p(x) =        " + pp1);
-	System.out.println("p(x) =        " + pp2);
-	System.out.println("p(x) =        " + pp3);
-	System.out.println("p(x) =        " + pp4);
-	System.out.println("p(x) =        " + pp5);
-	System.out.println("p(x) =        " + pp6);*/
-	//Polynomial res = pp1.plus(pp5).plus(pp2);
-	//System.out.println("res =        " + res);
-
-/*	Term pp1 = new Term(-1,1);    //x
-	Term pp2   = new Term(-5, 0); //5.0
-	Term pp3   = new Term(-1, 0); //1.0
-	Term pp4   = new Term(-1, 2); //x^2
-	Term pp5   = new Term(-2, 1); //2x
-	Term pp6   = new Term(-2, 2); //2x^2
-	Term pp7   = new Term(-2, 1); //-2x
-	Term pp8   = new Term(-1, 1); //-x*//*
-
-	System.out.println("p(x) =        " + pp1);
-	System.out.println("p(x) =        " + pp2);
-	System.out.println("p(x) =        " + pp3);
-	System.out.println("p(x) =        " + pp4);
-	System.out.println("p(x) =        " + pp5);
-	System.out.println("p(x) =        " + pp6);*/
-
-
-
+private static void showMessage(String message)
+	{
+		System.out.println(message);
+	}
 }
-}
+

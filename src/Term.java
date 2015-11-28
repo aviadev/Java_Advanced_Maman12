@@ -1,5 +1,5 @@
 /**
- * Created by aviad on 30/10/2015.
+ * Created by Aviad on 30/10/2015.
  */
 public class Term
 {
@@ -33,14 +33,16 @@ public void setCoefficient(double coefficient)
 
 protected int getDegree() {return _degree;}
 
-public boolean equals(Term p)
+public void setDegree(int degree)
 	{
-		return this._degree == p._degree && this._coefficient == p._coefficient;
+		this._degree = degree;
 	}
 
-public boolean isSameDegree(Term other)
+public boolean equals(Object obj)
 	{
-		return this._degree == other._degree;
+		if (obj == null || this.getClass() != obj.getClass()) return false;
+		Term other = (Term) obj;
+		return !(this._degree != other._degree || this._coefficient != other._coefficient);
 	}
 
 public String toString()
@@ -66,6 +68,13 @@ public String toString()
 				break;
 			}
 
-		return str;
+		return str + " ";
 	}
+
+public boolean isSameDegree(Term other)
+	{
+		return this._degree == other._degree;
+	}
+
+
 }
