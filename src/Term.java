@@ -28,11 +28,6 @@ public void setCoefficient(double coefficient)
 
 protected int getDegree() {return _degree;}
 
-public void setDegree(int degree)
-	{
-		this._degree = degree;
-	}
-
 public boolean equals(Object obj)
 	{
 		if (obj == null || this.getClass() != obj.getClass()) return false;
@@ -65,11 +60,4 @@ public String toString()
 
 		return str + " ";
 	}
-
-public boolean isSameDegree(Term other)
-	{
-		return this._degree == other._degree;
-	}
-
-
 }
