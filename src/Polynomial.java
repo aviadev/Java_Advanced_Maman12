@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 
-
 public class Polynomial
 {
 
@@ -17,7 +16,7 @@ public Polynomial(ArrayList<Double> polCoefficientArray, ArrayList<Integer> polD
 
 		if (polCoefficientArray.size() > 0)
 			{
-			Polynomial p = createPolynomialFromArrays(polCoefficientArray, polDegreeArray);
+			createPolynomialFromArrays(polCoefficientArray, polDegreeArray);
 			}
 	}
 
@@ -136,11 +135,11 @@ public Polynomial evaluate()
 			double currentCoef = thisPol._termsList.get(i).getCoefficient();
 
 			if (currentDegree > 0)
-					{
-					double calculatedCoef = currentCoef * currentDegree;
-					int calculatedDegree = currentDegree - 1;
-					res._termsList.add(new Term(calculatedCoef, calculatedDegree));
-					}
+				{
+				double calculatedCoef = currentCoef * currentDegree;
+				int calculatedDegree = currentDegree - 1;
+				res._termsList.add(new Term(calculatedCoef, calculatedDegree));
+				}
 			}
 		return res;
 	}
@@ -192,8 +191,5 @@ public String toString()
 
 			}
 		return str;
-
 	}
-
-
 }
